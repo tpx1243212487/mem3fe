@@ -46,77 +46,126 @@ export const constantRoutes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/dashboard',
+    redirect: '/mem3',
     children: [{
-      path: 'dashboard',
-      name: 'Dashboard',
+      path: 'mem',
+      name: 'MemBoard',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      meta: { title: 'MemBoard', icon: 'dashboard' }
     }]
   },
 
   {
-    path: '/example',
+    path: '/reports',
     component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'el-icon-s-help' },
-    children: [
+    // redirect: '/reports/table',
+    name: 'Reports',
+    meta: { title: 'Reports', icon: 'el-icon-s-help' },
+    children: [  
       {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
+        path: 'fixpackreport',
+        name: 'Fixpack Report',
+        component: () => import('@/views/reports/fixpackreport'),
+        meta: { title: 'Fixpack Reporting', icon: 'tree' }
       },
       {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
+        path: 'estatereport',
+        name: 'Estate Report',
+        component: () => import('@/views/reports/estatereport'),
+        meta: { title: 'Estate Report', icon: 'table' }
+      },
+      {
+        path: 'sapphirereport',
+        name: 'Sapphire Report',
+        component: () => import('@/views/reports/sapphirereport'),
+        meta: { title: 'Sapphire Report', icon: 'table' }
+      },
+      {
+        path: 'patchreport',
+        name: 'Patch Report',
+        component: () => import('@/views/reports/patchreport'),
+        meta: { title: 'Patch Report', icon: 'table' }
+      },
+      {
+        path: 'demisereport',
+        name: 'Demise Report',
+        component: () => import('@/views/reports/demisereport'),
+        meta: { title: 'Demise Report', icon: 'table' }
+      },
+      {
+        path: 'billingreport',
+        name: 'Billing Report',
+        component: () => import('@/views/reports/billingreport'),
+        meta: { title: 'Billing Report', icon: 'table' }
+      },
+      {
+        path: 'billingmainreport',
+        name: 'Billing Maintenance Report',
+        component: () => import('@/views/reports/billingmainreport'),
+        meta: { title: 'Billing Maintenance Report', icon: 'table' }
+      },
+      {
+        path: 'hostbillingdefaultsreport',
+        name: 'Host Billing Defaults Report',
+        component: () => import('@/views/reports/hostbillingdefaultsreport'),
+        meta: { title: 'Host Billing Defaults Report', icon: 'table' }
       }
     ]
   },
 
   {
-    path: '/form',
+    path: '/lookup',
     component: Layout,
     children: [
       {
         path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
+        name: 'Server/Instance Lookup',
+        component: () => import('@/views/lookup/index'),
+        meta: { title: 'Server/Instance Lookup', icon: 'form' }
       }
     ]
   },
 
   {
-    path: '/nested',
+    path: '/jobmanager',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'JobManager',
+        component: () => import('@/views/form/index'),
+        meta: { title: 'JobManager', icon: 'form' }
+      }
+    ]
+  },
+
+  {
+    path: '/admin',
     component: Layout,
     redirect: '/nested/menu1',
-    name: 'Nested',
+    name: 'Admin',
     meta: {
-      title: 'Nested',
+      title: 'Admin',
       icon: 'nested'
     },
     children: [
       {
-        path: 'menu1',
+        path: 'datamanagement',
         component: () => import('@/views/nested/menu1/index'), // Parent router-view
-        name: 'Menu1',
-        meta: { title: 'Menu1' },
+        name: 'Data Management',
+        meta: { title: 'Data Management' },
         children: [
           {
-            path: 'menu1-1',
+            path: 'massupdate',
             component: () => import('@/views/nested/menu1/menu1-1'),
-            name: 'Menu1-1',
+            name: 'Mass Update',
             meta: { title: 'Menu1-1' }
           },
           {
-            path: 'menu1-2',
+            path: 'jobadministration',
             component: () => import('@/views/nested/menu1/menu1-2'),
-            name: 'Menu1-2',
-            meta: { title: 'Menu1-2' },
+            name: 'Job Administration',
+            meta: { title: 'Job Administration' },
             children: [
               {
                 path: 'menu1-2-1',
@@ -133,29 +182,41 @@ export const constantRoutes = [
             ]
           },
           {
-            path: 'menu1-3',
+            path: 'serverinfo',
             component: () => import('@/views/nested/menu1/menu1-3'),
-            name: 'Menu1-3',
-            meta: { title: 'Menu1-3' }
+            name: 'Server Info',
+            meta: { title: 'Server Info' }
+          },
+          {
+            path: 'uploadhpsadata',
+            component: () => import('@/views/nested/menu1/menu1-3'),
+            name: 'Upload HPSA Data',
+            meta: { title: 'Upload HPSA Data' }
+          },
+          {
+            path: 'inactivitydays',
+            component: () => import('@/views/nested/menu1/menu1-3'),
+            name: 'View/Edit Inactivity Days',
+            meta: { title: 'View/Edit Inactivity Days' }
           }
         ]
       },
       {
-        path: 'menu2',
+        path: 'runimports',
         component: () => import('@/views/nested/menu2/index'),
-        name: 'Menu2',
-        meta: { title: 'menu2' }
+        name: 'Run Imports',
+        meta: { title: 'Run Imports' }
       }
     ]
   },
 
   {
-    path: 'external-link',
+    path: 'faq',
     component: Layout,
     children: [
       {
         path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: 'External Link', icon: 'link' }
+        meta: { title: 'FAQ', icon: 'link' }
       }
     ]
   },
